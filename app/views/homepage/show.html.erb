@@ -1,7 +1,14 @@
-<figure class='slicker_image' data-placeholder-color="<%= @user_photo.image_color %>">
-  <%= image_tag(@user_photo.image.large.url, class: "slicker_image__image") %>
-</figure>
-<br>
-<br>
-<br>
-<a>Click</a>
+<% if @user_photo %>
+  <figure class='slicker_image' data-placeholder-color="<%= @user_photo.image_color %>">
+    <%= image_tag(@user_photo.image.large.url, class: "slicker_image__image") %>
+  </figure>
+<% else %>
+  <p>
+    You don't have and UserPhotos to show. Please create one from the command line via:
+    <pre>
+      <code>
+        UserPhoto.create!(remote_image_url: "https://robohash.org/KatanaCode.jpg?size=200x200")
+      </code>
+    </pre>
+  </p>
+<% end %>
